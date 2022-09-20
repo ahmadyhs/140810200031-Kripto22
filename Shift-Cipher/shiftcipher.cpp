@@ -1,11 +1,5 @@
 /*
-  140810200011 Faiq Muhammad
-  140810200017 M. Keenan Febriansyah
-  140810200021 Rifqi Akmal Fauzi
-  140810200029 Adnan Rafiyansyah Majid
-  140810200031 Ahmad Yahya Salim
-
-  --- Shift Cipher ---
+  Shift Cipher Encryption Program
 */
 
 #include <iostream>
@@ -16,7 +10,7 @@ string enkripsi(string plain_text, int key){
 	for(int i = 0; i < plain_text.size(); i++){
 		if(isupper(plain_text[i])){
 			cipher_text += char(int(plain_text[i] + key - 65) % 26 + 65); //65 = A-Z
-		} else if(isspace(plain_text[i])){
+		} else if(isspace(plain_text[i])){ // untuk enkrip spasi
 			cipher_text += char(int(plain_text[i] + key));
 		} else {
 			cipher_text += char(int(plain_text[i] + key - 97) % 26 + 97); //97 = a-z
@@ -38,21 +32,23 @@ string dekripsi(string cipher_text, int key){
 	}
 	return plain_text;
 }
+
 int main(){
 	string plain_text;
-  int key;
+  	int key;
 
-	cout << "Masukkan plain text: ";
+	cout << "\n\t---- Program Enkripsi Shift Cipher ----\n";
+	cout << "\nMasukkan plain text : ";
 	getline(cin, plain_text);
 
-	cout << "Masukkan key: ";
+	cout << "Masukkan nilai kunci K : ";
 	cin >> key;
   
 	string cipher_text = enkripsi(plain_text, key);
 	
-	cout << "\nEnkripsi: \n";
-	cout << "Cipher text: " << cipher_text << endl;
+	cout << "\n-----Enkripsi-----\n"; 
+	cout << "Cipher text	: " << cipher_text << endl;
 	
-	cout << "\nDekripsi:\n";
-	cout << "Plain Text: "<< dekripsi(cipher_text, key) << endl;
+	cout << "\n------Dekripsi-----\n";
+	cout << "Plain Text	: "<< dekripsi(cipher_text, key) << endl;
 }
